@@ -9,9 +9,10 @@ if (theUrl.innerHTML.startsWith("<img alt=\"Icon for HighWire\"")) {
 	var garbage = theUrl.indexOf('?');
 	theUrl = theUrl.substring(0, garbage != -1 ? garbage : theUrl.length);
 	window.location = theUrl.replace('doi', 'doi/pdf');
+} else if (String(theUrl).startsWith("http://dx.doi.org/10.1021")) {
+	window.location = String(theUrl).replace('dx.doi.org', 'pubs.acs.org/doi/pdf');
 } else if (theUrl.innerHTML.startsWith("<img alt=\"Icon for Wiley\"")) {
-	theUrl = String(theUrl).replace('dx.doi.org', 'onlinelibrary.wiley.com/doi');
-	window.location = theUrl + '/pdf';
+	window.location = String(theUrl).replace('dx.doi.org', 'onlinelibrary.wiley.com/doi') + '/pdf';
 } else {
 	alert("The way to the pdf I know not.  Yes, hmmm.");
 }
