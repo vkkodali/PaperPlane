@@ -11,6 +11,8 @@ if (theUrl.innerHTML.startsWith("<img alt=\"Icon for HighWire\"")) {
 	window.location = theUrl.replace('doi', 'doi/pdf');
 } else if (String(theUrl).startsWith("http://dx.doi.org/10.1021")) {
 	window.location = String(theUrl).replace('dx.doi.org', 'pubs.acs.org/doi/pdf');
+} else if (String(theUrl).startsWith("http://dx.doi.org/10.3389")) {
+	window.location = String(theUrl).replace('dx.doi.org', 'readcube.com/articles');
 } else if (theUrl.innerHTML.startsWith("<img alt=\"Icon for Wiley\"")) {
 	window.location = String(theUrl).replace('dx.doi.org', 'onlinelibrary.wiley.com/doi') + '/pdf';
 } else {
