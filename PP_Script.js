@@ -9,6 +9,11 @@ if (theUrl.innerHTML.startsWith("<img alt=\"Icon for HighWire\"")) {
 	var garbage = theUrl.indexOf('?');
 	theUrl = theUrl.substring(0, garbage != -1 ? garbage : theUrl.length);
 	window.location = theUrl.replace('doi', 'doi/pdf');
+} else if (String(theUrl).includes("annualreviews.org")) {
+	theUrl = String(theUrl);
+	var garbage = theUrl.indexOf('?');
+	theUrl = theUrl.substring(0, garbage != -1 ? garbage : theUrl.length);
+	window.location = theUrl.replace('full', 'pdf');
 } else if (String(theUrl).startsWith("http://dx.doi.org/10.1021")) {
 	window.location = String(theUrl).replace('dx.doi.org', 'pubs.acs.org/doi/pdf');
 } else if (String(theUrl).startsWith("http://dx.doi.org/10.3389")) {
