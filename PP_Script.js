@@ -9,11 +9,16 @@ if (theUrl.innerHTML.startsWith("<img alt=\"Icon for HighWire\"")) {
 	var garbage = theUrl.indexOf('?');
 	theUrl = theUrl.substring(0, garbage != -1 ? garbage : theUrl.length);
 	window.location = theUrl.replace('doi', 'doi/pdf');
-} else if (String(theUrl).includes("annualreviews.org")) {
+} else if (String(theUrl).includes("annualreviews.org") || String(theUrl).includes("tandfonline.com")) {
 	theUrl = String(theUrl);
 	var garbage = theUrl.indexOf('?');
 	theUrl = theUrl.substring(0, garbage != -1 ? garbage : theUrl.length);
 	window.location = theUrl.replace('full', 'pdf');
+} else if (String(theUrl).includes("future-science.com")) {
+	theUrl = String(theUrl);
+	var garbage = theUrl.indexOf('?');
+	theUrl = theUrl.substring(0, garbage != -1 ? garbage : theUrl.length);
+	window.location = theUrl.replace('abs', 'pdf');
 } else if (String(theUrl).includes("spandidos-publications.com")) {
 	window.location = String(theUrl) + '/download';
 } else if (String(theUrl).startsWith("http://dx.doi.org/10.1021")) {
