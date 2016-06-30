@@ -31,6 +31,8 @@ if (theUrl.innerHTML.startsWith("<img alt=\"Icon for HighWire\"")) {
 	window.location = String(theUrl).replace('dx.doi.org', 'online.liebertpub.com/doi/pdf');
 } else if (String(theUrl).startsWith("http://dx.doi.org/10.1007")) {
 	window.location = String(theUrl).replace('dx.doi.org', 'link.springer.com/content/pdf/') + '.pdf';
+} else if (document.getElementsByClassName("rprtid")[0].getElementsByTagName("a")[1].includes("pmc/articles")){
+	window.open(document.getElementsByClassName("rprtid")[0].getElementsByTagName("a")[1] + 'pdf', "_self");
 } else {
 	alert("The way to the pdf I know not.  Yes, hmmm.");
 }
