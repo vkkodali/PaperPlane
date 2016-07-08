@@ -16,5 +16,5 @@ Create a new bookmark for your browser and copy/paste the code from [this page](
 
 ## Can I help/complain?
 + Of course! (At least be civil, if not constructive, when complaining).
-+ If you come across a journal that does not work, let me know. I will try to add it. So far, I have not been able to add anything from Elesevier group. 
++ If you come across a journal that does not work, let me know. I will try to add it. So far, I have not been able to add anything from Elsevier group. 
 + If you know javascript better than I do, you are welcome to check out the few lines of code [here](PP_Script.js) and add your contributions. For example, see the previous point about adding Elsevier group journals. 
