@@ -6,7 +6,7 @@ As a part of my day job I read a lot of articles from PubMed and hopping through
 
 ## How do I use it? 
 Create a new bookmark for your browser and copy/paste the code shown below into the Location/URL box.
-```
+```javascript
 javascript:(function(){var jsCode=document.createElement('script');jsCode.setAttribute('src','http://rawgit.com/vkkodali/PaperPlane/master/PP_Script.js');document.body.appendChild(jsCode);}
 ```
 
