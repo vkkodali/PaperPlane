@@ -5,10 +5,11 @@ PaperPlane is a bookmarklet that lives in your browser's toolbar. When you are o
 As a part of my day job I read a lot of articles from PubMed and hopping through multiple pages in multiple different tabs to reach the nicely formatted PDF felt a bit cumbersome. Digging around, I discovered Pubget's PaperPlane but was disappointed to find out that it doesn't really work that well after all. I decided that I will put my (extremely) rudimentary coding skills to some use... and out came this!
 
 ## How do I use it? 
-Create a new bookmark for your browser and copy/paste the code shown below into the Location/URL box.
+Create a new bookmark, give it a friendly name like "PaperPlane" and copy/paste the code shown below into the Location/URL box.
 ```javascript
 javascript:(function(){var jsCode=document.createElement('script');jsCode.setAttribute('src','http://rawgit.com/vkkodali/PaperPlane/master/PP_Script.js');document.body.appendChild(jsCode);}
 ```
+When you are on PubMed abstract page, instead of clicking the journal-specific icon to go the full text on the journal's website, click the PaperPlane bookmark and if all goes well a PDF appears in your browser window
 
 ## Some caveats
 + It only works on PubMed abstracts pages. If you use it elsewhere, it fails silently.
