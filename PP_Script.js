@@ -1,6 +1,6 @@
 var theUrl = document.getElementsByClassName("icons portlet")[0].getElementsByTagName("a")[0];
 if (theUrl.innerHTML.startsWith("<img alt=\"Icon for HighWire\"")) {
-	window.location = String(theUrl).replace('long', 'full.pdf');
+	window.location.href = String(theUrl).replace('long', 'full.pdf');
 } else if (String(theUrl).includes("biomedcentral.com")) {
 	theUrl = String(theUrl).replace('articles', 'track/pdf');
 	window.location = theUrl + '?site=pubmed.gov';
@@ -31,6 +31,9 @@ if (theUrl.innerHTML.startsWith("<img alt=\"Icon for HighWire\"")) {
 	window.location = String(theUrl).replace('dx.doi.org', 'online.liebertpub.com/doi/pdf');
 } else if (String(theUrl).startsWith("http://dx.doi.org/10.1007")) {
 	window.location = String(theUrl).replace('dx.doi.org', 'link.springer.com/content/pdf/') + '.pdf';
+} else if (String(theUrl).startsWith("http://dx.doi.org/10.1172")) {
+	var articleID = theUrl.substring(theUrl.indexOf('JCI') + 3, theUrl.length);
+	window.location.href = "https://www.jci.org/articles/view/" + articleID + "/pdf/render";
 } else if (String(document.getElementsByClassName("rprtid")[0].getElementsByTagName("a")[1]).includes("pmc/articles")){
 	window.open(document.getElementsByClassName("rprtid")[0].getElementsByTagName("a")[1] + 'pdf', "_self");
 } else {
