@@ -32,6 +32,7 @@ if (theUrl.innerHTML.startsWith("<img alt=\"Icon for HighWire\"")) {
 } else if (String(theUrl).startsWith("http://dx.doi.org/10.1007")) {
 	window.location = String(theUrl).replace('dx.doi.org', 'link.springer.com/content/pdf/') + '.pdf';
 } else if (String(theUrl).startsWith("http://dx.doi.org/10.1172")) {
+	theUrl = String(theUrl);
 	var articleID = theUrl.substring(theUrl.indexOf('JCI') + 3, theUrl.length);
 	window.location.href = "https://www.jci.org/articles/view/" + articleID + "/pdf/render";
 } else if (String(document.getElementsByClassName("rprtid")[0].getElementsByTagName("a")[1]).includes("pmc/articles")){
