@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>PaperPlane</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>PaperPlane</h1>
+        <p>PubMed to PDF in just a click!</p>
+        <p class="view"><small>For the impatient, drag this to your bookmarks bar</small><br/><a href="javascript:(function(){var%20jsCode=document.createElement('script');jsCode.setAttribute('src','http://rawgit.com/vkkodali/PaperPlane/master/PP_Script.js');document.body.appendChild(jsCode);})();">PaperPlane</a></p>
+				<hr>
+      </header>
+      <section>
+        <h2>
+				<a id="what-is-paperplane" class="anchor" href="#what-is-paperplane" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What is PaperPlane?</h2>
+
+				<p>PaperPlane is a bookmarklet that lives in your browser's toolbar. When you are on a PubMed abstract page (<a href="http://www.ncbi.nlm.nih.gov/pubmed/26553804">like this one</a>), click the PaperPlane bookmarklet to go to the PDF directly. Simple!</p>
+
+				<h2>
+				<a id="why-is-it-necessary-why-did-you-make-it" class="anchor" href="#why-is-it-necessary-why-did-you-make-it" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Why is it necessary? Why did you make it?</h2>
+
+				<p>As a part of my day job I read a lot of articles from PubMed and hopping through multiple pages in multiple different tabs to reach the nicely formatted PDF felt a bit cumbersome. Digging around, I discovered Pubget's PaperPlane but was disappointed to find out that it doesn't really work that well after all. I decided that I will put my (extremely) rudimentary coding skills to some use... and out came this!</p>
+
+				<h2>
+				<a id="how-do-i-use-it" class="anchor" href="#how-do-i-use-it" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How do I use it?</h2>
+
+				<p>First, drag the <a href="javascript:(function(){var%20jsCode=document.createElement('script');jsCode.setAttribute('src','http://rawgit.com/vkkodali/PaperPlane/master/PP_Script.js');document.body.appendChild(jsCode);})();">PaperPlane</a> bookmarklet to your browser bookmarks bar.</p>
+
+				<p>When you are on PubMed abstract page, instead of clicking the journal-specific icon to go the full text on the journal's website, click the PaperPlane bookmark and if all goes well a PDF appears in your browser window</p>
+
+				<h2>
+				<a id="some-caveats" class="anchor" href="#some-caveats" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Some caveats</h2>
+
+				<ul>
+				<li>It only works on PubMed abstracts pages. If you use it elsewhere, it fails silently.</li>
+				<li>It only works for some journals. If there is a PubMedCentral article is available it will take you there. But not all PMC PDFs are nicely formatted so you may want to just go to the Journal's website after all.</li>
+				<li>When it cannot take you to the PDF or a PMC PDF is not available, it will return a friendly message.</li>
+				</ul>
+
+				<h2>
+				<a id="can-i-helpcomplain" class="anchor" href="#can-i-helpcomplain" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Can I help/complain?</h2>
+
+				<ul>
+				<li>Of course! (At least be civil, if not constructive, when complaining).</li>
+				<li>If you come across a journal that does not work, let me know. I will try to add it. So far, I have not been able to add anything from Elsevier group. </li>
+				<li>If you know javascript better than I do, you are welcome to check out the few lines of code <a href="PP_Script.js">here</a> and add your contributions. For example, see the previous point about adding Elsevier group journals. </li>
+				</ul>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="http://github.com/vkkodali">Vamsi Kodali</a><br/>
+				<a href="http://github.com/orderedlist/minimal">View the Project on GitHub <small>vkkodali/PaperPlane</small></a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+  </body>
+</html>
