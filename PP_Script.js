@@ -1,43 +1,31 @@
-/* testing */
-var theUrl = document.getElementsByClassName("icons portlet")[0].getElementsByTagName("a")[0];
-if (theUrl.innerHTML.startsWith("<img alt=\"Icon for HighWire\"")) {
-	window.location.href = String(theUrl).replace('long', 'full.pdf');
-} else if (String(theUrl).includes("biomedcentral.com")) {
-	theUrl = String(theUrl).replace('articles', 'track/pdf');
-	window.location = theUrl + '?site=pubmed.gov';
-} else if (String(theUrl).includes("endocrine.org")) {
-	theUrl = String(theUrl);
-	var garbage = theUrl.indexOf('?');
-	theUrl = theUrl.substring(0, garbage != -1 ? garbage : theUrl.length);
-	window.location = theUrl.replace('doi', 'doi/pdf');
-} else if (String(theUrl).includes("annualreviews.org") || String(theUrl).includes("tandfonline.com")) {
-	theUrl = String(theUrl);
-	var garbage = theUrl.indexOf('?');
-	theUrl = theUrl.substring(0, garbage != -1 ? garbage : theUrl.length);
-	window.location = theUrl.replace('full', 'pdf');
-} else if (String(theUrl).includes("future-science.com")) {
-	theUrl = String(theUrl);
-	var garbage = theUrl.indexOf('?');
-	theUrl = theUrl.substring(0, garbage != -1 ? garbage : theUrl.length);
-	window.location = theUrl.replace('abs', 'pdf');
-} else if (String(theUrl).includes("spandidos-publications.com")) {
-	window.location = String(theUrl) + '/download';
-} else if (String(theUrl).startsWith("http://dx.doi.org/10.1021")) {
-	window.location = String(theUrl).replace('dx.doi.org', 'pubs.acs.org/doi/pdf');
-} else if (String(theUrl).startsWith("http://dx.doi.org/10.3389")) {
-	window.location = String(theUrl).replace('dx.doi.org', 'readcube.com/articles');
-} else if (String(theUrl).startsWith("http://dx.doi.org/10.1002") || String(theUrl).startsWith("http://dx.doi.org/10.1016") || String(theUrl).startsWith("http://dx.doi.org/10.1110") || String(theUrl).startsWith("http://dx.doi.org/10.1111") || String(theUrl).startsWith("http://dx.doi.org/10.1113")) {
-	window.location = String(theUrl).replace('dx.doi.org', 'onlinelibrary.wiley.com/doi') + '/pdf';
-} else if (String(theUrl).startsWith("http://dx.doi.org/10.1089")) {
-	window.location = String(theUrl).replace('dx.doi.org', 'online.liebertpub.com/doi/pdf');
-} else if (String(theUrl).startsWith("http://dx.doi.org/10.1007")) {
-	window.location = String(theUrl).replace('dx.doi.org', 'link.springer.com/content/pdf/') + '.pdf';
-} else if (String(theUrl).startsWith("http://dx.doi.org/10.1172")) {
-	theUrl = String(theUrl);
-	var articleID = theUrl.substring(theUrl.indexOf('JCI') + 3, theUrl.length);
-	window.location.href = "https://www.jci.org/articles/view/" + articleID + "/pdf/render";
-} else if (String(document.getElementsByClassName("rprtid")[0].getElementsByTagName("a")[1]).includes("pmc/articles")){
-	window.open(document.getElementsByClassName("rprtid")[0].getElementsByTagName("a")[1] + 'pdf', "_self");
-} else {
-	alert("The way to the pdf I know not.  Yes, hmmm.");
+var urlPatterns = [
+  {urlIn: 'biomedcentral.com', replaceThis: 'articles', replaceWith: 'track/pdf', addThis: '?site=pubmed.gov'},
+  {urlIn: 'endocrine.org', replaceThis: 'doi', replaceWith: 'doi/pdf', addThis: ''},
+  {urlIn: 'annualreviews.org', replaceThis: 'full', replaceWith: 'pdf', addThis: },
+  {urlIn: 'tandfonline.com', replaceThis: 'full', replaceWith: 'pdf', addThis: },
+  {urlIn: 'future-science.com', replaceThis: 'abs', replaceWith: 'pdf', addThis: },
+  {urlIn: 'spandidos-publications.com', replaceThis: '', replaceWith: '', addThis: '/download' },
+  {urlIn: 'dx.doi.org/10.1021', replaceThis: 'dx.doi.org', replaceWith: 'pubs.acs.org/doi/pdf', addThis: ''},
+  {urlIn: 'dx.doi.org/10.3389', replaceThis: 'dx.doi.org', replaceWith: 'readcube.com/articles', addThis: ''},
+  {urlIn: 'dx.doi.org/10.1002', replaceThis: 'dx.doi.org', replaceWith: 'onlinelibrary.wiley.com/doi', addThis: '/pdf'},
+  {urlIn: 'dx.doi.org/10.1016', replaceThis: 'dx.doi.org', replaceWith: 'onlinelibrary.wiley.com/doi', addThis: '/pdf'},
+  {urlIn: 'dx.doi.org/10.1110', replaceThis: 'dx.doi.org', replaceWith: 'onlinelibrary.wiley.com/doi', addThis: '/pdf'},
+  {urlIn: 'dx.doi.org/10.1111', replaceThis: 'dx.doi.org', replaceWith: 'onlinelibrary.wiley.com/doi', addThis: '/pdf'},
+  {urlIn: 'dx.doi.org/10.1113', replaceThis: 'dx.doi.org', replaceWith: 'onlinelibrary.wiley.com/doi', addThis: '/pdf'},
+  {urlIn: 'dx.doi.org/10.1089', replaceThis: 'dx.doi.org', replaceWith: 'online.liebertpub.com/doi/pdf', addThis: ''},
+  {urlIn: , replaceThis: , replaceWith: , addThis: }
+
+];
+
+/* var theUrl = String(document.getElementsByClassName("icons portlet")[0].getElementsByTagName("a")[0]);
+var garbage = theUrl.indexOf('?');
+theUrl = theUrl.substring(0, garbage != -1 ? garbage : theUrl.length); */
+
+for (i = 0; i < urlPatterns.length; i += 1) {
+  if (theUrl.includes(urlPatterns[i].urlIn)) {
+    console.log(theUrl.replace(urlPatterns[i].replaceThis, urlPatterns[i].replaceWith) + urlPatterns[i].addThis);
+    break;
+  } else {
+    console.log("keep going...");
+  }
 }
