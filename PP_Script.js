@@ -9,7 +9,7 @@ function noPDFErrorMessage () {
   ];
   var i = Math.floor(Math.random()*yodaSays.length);
   alert(yodaSays[i]);
-}
+};
 
 var urlPatterns = [
   {urlIn: 'biomedcentral.com', replaceThis: 'articles', replaceWith: 'track/pdf', addThis: '?site=pubmed.gov'},
