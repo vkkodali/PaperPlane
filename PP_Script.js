@@ -1,4 +1,3 @@
-/* display a random alert message */
 function noPDFErrorMessage () {
   var yodaSays = [
     "Where the pdf is I know not.",
@@ -9,14 +8,22 @@ function noPDFErrorMessage () {
   ];
   var i = Math.floor(Math.random()*yodaSays.length);
   alert(yodaSays[i]);
+}
+
+if (!(window.location.href.startsWith('http://www.ncbi.nlm.nih.gov/pubmed/'))) {
+  alert("This script works only on PubMed abstract pages");
+  return;
+} else if (document.getElementsByClassName("icons portlet").length < 1) {
+  alert("It appears that a Full text link is not available through PubMed.");
+  return;
 };
 
 var urlPatterns = [
   {urlIn: 'biomedcentral.com', replaceThis: 'articles', replaceWith: 'track/pdf', addThis: '?site=pubmed.gov'},
   {urlIn: 'endocrine.org', replaceThis: 'doi', replaceWith: 'doi/pdf', addThis: ''},
-  {urlIn: 'annualreviews.org', replaceThis: 'full', replaceWith: 'pdf', addThis: },
-  {urlIn: 'tandfonline.com', replaceThis: 'full', replaceWith: 'pdf', addThis: },
-  {urlIn: 'future-science.com', replaceThis: 'abs', replaceWith: 'pdf', addThis: },
+  {urlIn: 'annualreviews.org', replaceThis: 'full', replaceWith: 'pdf', addThis: ''},
+  {urlIn: 'tandfonline.com', replaceThis: 'full', replaceWith: 'pdf', addThis: ''},
+  {urlIn: 'future-science.com', replaceThis: 'abs', replaceWith: 'pdf', addThis: ''},
   {urlIn: 'spandidos-publications.com', replaceThis: '', replaceWith: '', addThis: '/download' },
   {urlIn: 'dx.doi.org/10.1021', replaceThis: 'dx.doi.org', replaceWith: 'pubs.acs.org/doi/pdf', addThis: ''},
   {urlIn: 'dx.doi.org/10.3389', replaceThis: 'dx.doi.org', replaceWith: 'readcube.com/articles', addThis: ''},
@@ -31,26 +38,18 @@ var urlPatterns = [
   {urlIn: 'karger.com/?DOI=', replaceThis: '?DOI=', replaceWith: 'Article/Pdf/', addThis: ''}
 ];
 
-if (!(window.location.href.startsWith('http://www.ncbi.nlm.nih.gov/pubmed/'))) {
-  alert("This script works only on PubMed abstract pages");
-  return;
-} else if (document.getElementsByClassName("icons portlet").length < 1) {
-  alert("It appears that a Full text link is not available through PubMed.");
-  return;
-};
+var theUrl = String(document.getElementsByClassName("icons portlet")[0].getElementsByTagName("a")[0]);
+var garbage = theUrl.indexOf('?');
+theUrl = theUrl.substring(0, garbage != -1 ? garbage : theUrl.length);
+for (i = 0; i < urlPatterns.length; i += 1) {
+  if (theUrl.includes(urlPatterns[i].urlIn)) {
+    window.open(theUrl.replace(urlPatterns[i].replaceThis, urlPatterns[i].replaceWith) + urlPatterns[i].addThis, "_self");
+    return;
+  };
 
 var theUrl = String(document.getElementsByClassName("icons portlet")[0].getElementsByTagName("a")[0]);
 if (theUrl.innerHTML.startsWith("<img alt=\"Icon for HighWire\"")) {
   window.open(String(theUrl).replace('long', 'full.pdf'), "_self");
-} else if {
-  var garbage = theUrl.indexOf('?');
-  theUrl = theUrl.substring(0, garbage != -1 ? garbage : theUrl.length);
-  for (i = 0; i < urlPatterns.length; i += 1) {
-    if (theUrl.includes(urlPatterns[i].urlIn)) {
-      window.open(theUrl.replace(urlPatterns[i].replaceThis, urlPatterns[i].replaceWith) + urlPatterns[i].addThis, "_self");
-      return;
-    }
-  }
 } else if (String(document.getElementsByClassName("rprtid")[0].getElementsByTagName("a")[1]).includes("pmc/articles")) {
   window.open(document.getElementsByClassName("rprtid")[0].getElementsByTagName("a")[1] + 'pdf', "_self");
 } else {
