@@ -22,7 +22,28 @@ function firstCheck () {
   };
 }
 
-firstCheck();
+function patternFetch () {
+  var theUrl = String(document.getElementsByClassName("icons portlet")[0].getElementsByTagName("a")[0]);
+  var garbage = theUrl.indexOf('?');
+  theUrl = theUrl.substring(0, garbage != -1 ? garbage : theUrl.length);
+  for (i = 0; i < urlPatterns.length; i += 1) {
+    if (theUrl.includes(urlPatterns[i].urlIn)) {
+      window.open(theUrl.replace(urlPatterns[i].replaceThis, urlPatterns[i].replaceWith) + urlPatterns[i].addThis, "_self");
+      return;
+    };
+  };
+}
+
+function lastDitchFetch () {
+  var theUrl = String(document.getElementsByClassName("icons portlet")[0].getElementsByTagName("a")[0]);
+  if (theUrl.innerHTML.startsWith("<img alt=\"Icon for HighWire\"")) {
+    window.open(String(theUrl).replace('long', 'full.pdf'), "_self");
+  } else if (String(document.getElementsByClassName("rprtid")[0].getElementsByTagName("a")[1]).includes("pmc/articles")) {
+    window.open(document.getElementsByClassName("rprtid")[0].getElementsByTagName("a")[1] + 'pdf', "_self");
+  } else {
+    noPDFErrorMessage();
+  };
+}
 
 var urlPatterns = [
   {urlIn: 'biomedcentral.com', replaceThis: 'articles', replaceWith: 'track/pdf', addThis: '?site=pubmed.gov'},
@@ -44,21 +65,6 @@ var urlPatterns = [
   {urlIn: 'karger.com/?DOI=', replaceThis: '?DOI=', replaceWith: 'Article/Pdf/', addThis: ''}
 ];
 
-var theUrl = String(document.getElementsByClassName("icons portlet")[0].getElementsByTagName("a")[0]);
-var garbage = theUrl.indexOf('?');
-theUrl = theUrl.substring(0, garbage != -1 ? garbage : theUrl.length);
-for (i = 0; i < urlPatterns.length; i += 1) {
-  if (theUrl.includes(urlPatterns[i].urlIn)) {
-    window.open(theUrl.replace(urlPatterns[i].replaceThis, urlPatterns[i].replaceWith) + urlPatterns[i].addThis, "_self");
-    return;
-  };
-};
-
-var theUrl = String(document.getElementsByClassName("icons portlet")[0].getElementsByTagName("a")[0]);
-if (theUrl.innerHTML.startsWith("<img alt=\"Icon for HighWire\"")) {
-  window.open(String(theUrl).replace('long', 'full.pdf'), "_self");
-} else if (String(document.getElementsByClassName("rprtid")[0].getElementsByTagName("a")[1]).includes("pmc/articles")) {
-  window.open(document.getElementsByClassName("rprtid")[0].getElementsByTagName("a")[1] + 'pdf', "_self");
-} else {
-  noPDFErrorMessage();
-};
+firstCheck();
+patternFetch();
+lastDitchFetch();
