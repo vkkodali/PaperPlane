@@ -43,6 +43,7 @@ for (i = 0; i < urlPatterns.length; i += 1) {
   if (theUrl.includes(urlPatterns[i].urlIn)) {
     window.open(theUrl.replace(urlPatterns[i].replaceThis, urlPatterns[i].replaceWith) + urlPatterns[i].addThis, "_self");
   };
+};
 
 var theUrl = String(document.getElementsByClassName("icons portlet")[0].getElementsByTagName("a")[0]);
 if (theUrl.innerHTML.startsWith("<img alt=\"Icon for HighWire\"")) {
