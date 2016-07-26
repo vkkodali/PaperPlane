@@ -42,7 +42,6 @@ theUrl = theUrl.substring(0, garbage != -1 ? garbage : theUrl.length);
 for (i = 0; i < urlPatterns.length; i += 1) {
   if (theUrl.includes(urlPatterns[i].urlIn)) {
     window.open(theUrl.replace(urlPatterns[i].replaceThis, urlPatterns[i].replaceWith) + urlPatterns[i].addThis, "_self");
-    return;
   };
 
 var theUrl = String(document.getElementsByClassName("icons portlet")[0].getElementsByTagName("a")[0]);
