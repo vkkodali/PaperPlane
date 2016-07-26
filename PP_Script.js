@@ -1,3 +1,4 @@
+/* Error messages to display when PDF is not found */
 function noPDFErrorMessage () {
   var yodaSays = [
     "Where the pdf is I know not.",
@@ -10,13 +11,18 @@ function noPDFErrorMessage () {
   alert(yodaSays[i]);
 }
 
-if (!(window.location.href.startsWith('http://www.ncbi.nlm.nih.gov/pubmed/'))) {
-  alert("This script works only on PubMed abstract pages");
-  return;
-} else if (document.getElementsByClassName("icons portlet").length < 1) {
-  alert("It appears that a Full text link is not available through PubMed.");
-  return;
-};
+/* Check if the current page is a PubMed abstract page and if the journal-specific PDF link is available */
+function firstCheck () {
+  if (!(window.location.href.startsWith('http://www.ncbi.nlm.nih.gov/pubmed/'))) {
+    alert("This script works only on PubMed abstract pages");
+    return;
+  } else if (document.getElementsByClassName("icons portlet").length < 1) {
+    alert("It appears that a Full text link is not available through PubMed.");
+    return;
+  };
+}
+
+firstCheck();
 
 var urlPatterns = [
   {urlIn: 'biomedcentral.com', replaceThis: 'articles', replaceWith: 'track/pdf', addThis: '?site=pubmed.gov'},
