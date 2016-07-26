@@ -12,8 +12,10 @@ function noPDFErrorMessage () {
 
 if (!(window.location.href.startsWith('http://www.ncbi.nlm.nih.gov/pubmed/'))) {
   alert("This script works only on PubMed abstract pages");
+  return;
 } else if (document.getElementsByClassName("icons portlet").length < 1) {
   alert("It appears that a Full text link is not available through PubMed.");
+  return;
 };
 
 var urlPatterns = [
@@ -42,6 +44,7 @@ theUrl = theUrl.substring(0, garbage != -1 ? garbage : theUrl.length);
 for (i = 0; i < urlPatterns.length; i += 1) {
   if (theUrl.includes(urlPatterns[i].urlIn)) {
     window.open(theUrl.replace(urlPatterns[i].replaceThis, urlPatterns[i].replaceWith) + urlPatterns[i].addThis, "_self");
+    return;
   };
 };
 
