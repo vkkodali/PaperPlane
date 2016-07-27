@@ -26,10 +26,13 @@ function patternFetch () {
     {urlIn: 'dx.doi.org/10.1110', replaceThis: 'dx.doi.org', replaceWith: 'onlinelibrary.wiley.com/doi', addThis: '/pdf'},
     {urlIn: 'dx.doi.org/10.1111', replaceThis: 'dx.doi.org', replaceWith: 'onlinelibrary.wiley.com/doi', addThis: '/pdf'},
     {urlIn: 'dx.doi.org/10.1113', replaceThis: 'dx.doi.org', replaceWith: 'onlinelibrary.wiley.com/doi', addThis: '/pdf'},
+    {urlIn: 'dx.doi.org/10.2164', replaceThis: 'dx.doi.org', replaceWith: 'onlinelibrary.wiley.com/doi', addThis: '/pdf'},
     {urlIn: 'dx.doi.org/10.1089', replaceThis: 'dx.doi.org', replaceWith: 'online.liebertpub.com/doi/pdf', addThis: ''},
     {urlIn: 'dx.doi.org/10.1007', replaceThis: 'dx.doi.org', replaceWith: 'link.springer.com/content/pdf/', addThis: '.pdf'},
     {urlIn: 'dx.doi.org/10.1172', replaceThis: 'dx.doi.org/10.1172/JCI', replaceWith: 'jci.org/articles/view/', addThis: '/pdf/render'},
-    {urlIn: 'karger.com/?DOI=', replaceThis: '?DOI=', replaceWith: 'Article/Pdf/', addThis: ''}
+    {urlIn: 'karger.com/?DOI=', replaceThis: '?DOI=', replaceWith: 'Article/Pdf/', addThis: ''},
+    {urlIn: 'thieme-connect.com', replaceThis: 'DOI/DOI?', replaceWith: 'products/ejournals/pdf/', addThis: '.pdf'},
+    {urlIn: 'www.thno.org', replaceThis: 'htm', replaceWith: 'pdf', addThis: ''}
   ];
   var theUrl = String(document.getElementsByClassName("icons portlet")[0].getElementsByTagName("a")[0]);
   var garbage = theUrl.indexOf('?');
