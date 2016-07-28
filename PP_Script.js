@@ -11,6 +11,26 @@ function noPDFErrorMessage () {
   alert(yodaSays[i]);
 }
 
+/* Reformat urls for PLoS Journals */
+function reformatPlosUrls () {
+  var PLoSJournals = [
+    {shortName: "pbio", longName: "plosbiology" },
+    {shortName: "pcbi", longName: "ploscompbiol" },
+    {shortName: "pntd", longName: "plosntds" },
+    {shortName: "pmed", longName: "plosmedicine" },
+    {shortName: "pgen", longName: "plosgenetics" },
+    {shortName: "ppat", longName: "plospathogens" },
+    {shortName: "pone", longName: "plosone" }
+  ];
+  for (i = 0; i < PLoSJournals.length; i += 1) {
+    if (theUrl.includes(PLoSJournals[i].shortName)) {
+      theUrl = theUrl.replace('dx.plos.org', 'journals.plos.org/' + PLoSJournals[i].longName + '/article?id=');
+      return;
+    }
+  };
+}
+
+
 function patternFetch () {
   var urlPatterns = [
     {urlIn: 'biomedcentral.com', replaceThis: 'articles', replaceWith: 'track/pdf', addThis: '?site=pubmed.gov'},
@@ -51,6 +71,8 @@ function lastDitchFetch () {
     window.open(String(theUrl).replace('long', 'full.pdf'), "_self");
   } else if (String(document.getElementsByClassName("rprtid")[0].getElementsByTagName("a")[1]).includes("pmc/articles")) {
     window.open(document.getElementsByClassName("rprtid")[0].getElementsByTagName("a")[1] + 'pdf', "_self");
+  } else if (theUrl.includes('dx.plos.org')){
+    reformatPlosUrls();
   } else {
     noPDFErrorMessage();
   };
