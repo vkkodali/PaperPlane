@@ -13,6 +13,7 @@ function noPDFErrorMessage () {
 
 /* Check if the Url includes a urlPattern */
 function checkPatterns () {
+  theUrl = document.getElementsByClassName("icons portlet")[0].getElementsByTagName("a")[0];
   for (i = 0; i < urlPatterns.length; i += 1) {
     if (String(theUrl).includes(urlPatterns[i].urlIn)) {
       return true;
