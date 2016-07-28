@@ -71,7 +71,7 @@ function lastDitchFetch () {
     window.open(String(theUrl).replace('long', 'full.pdf'), "_self");
   } else if (String(document.getElementsByClassName("rprtid")[0].getElementsByTagName("a")[1]).includes("pmc/articles")) {
     window.open(document.getElementsByClassName("rprtid")[0].getElementsByTagName("a")[1] + 'pdf', "_self");
-  } else if (theUrl.includes('dx.plos.org')){
+  } else if (String(theUrl).includes('dx.plos.org')){
     reformatPlosUrls();
   } else {
     noPDFErrorMessage();
