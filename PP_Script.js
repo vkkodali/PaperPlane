@@ -33,7 +33,7 @@ function reformatPlosUrls () {
     {shortName: "pone", longName: "plosone" }
   ];
   for (i = 0; i < PLoSJournals.length; i += 1) {
-    if (theUrl.includes(PLoSJournals[i].shortName)) {
+    if (String(theUrl).includes(PLoSJournals[i].shortName)) {
       theUrl = theUrl.replace('dx.plos.org', 'journals.plos.org/' + PLoSJournals[i].longName + '/article?id=');
       return;
     }
@@ -79,10 +79,10 @@ function lastDitchFetch () {
   theUrl = document.getElementsByClassName("icons portlet")[0].getElementsByTagName("a")[0];
   if (theUrl.innerHTML.startsWith("<img alt=\"Icon for HighWire\"")) {
     window.open(String(theUrl).replace('long', 'full.pdf'), "_self");
-  } else if (String(document.getElementsByClassName("rprtid")[0].getElementsByTagName("a")[1]).includes("pmc/articles")) {
-    window.open(document.getElementsByClassName("rprtid")[0].getElementsByTagName("a")[1] + 'pdf', "_self");
   } else if (String(theUrl).includes('dx.plos.org')){
     reformatPlosUrls();
+  } else if (String(document.getElementsByClassName("rprtid")[0].getElementsByTagName("a")[1]).includes("pmc/articles")) {
+    window.open(document.getElementsByClassName("rprtid")[0].getElementsByTagName("a")[1] + 'pdf', "_self");
   } else {
     noPDFErrorMessage();
   }
