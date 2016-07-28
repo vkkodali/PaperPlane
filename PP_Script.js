@@ -34,7 +34,7 @@ function reformatPlosUrls () {
   ];
   for (i = 0; i < PLoSJournals.length; i += 1) {
     if (String(theUrl).includes(PLoSJournals[i].shortName)) {
-      theUrl = String(theUrl).replace('dx.plos.org', 'journals.plos.org/' + PLoSJournals[i].longName + '/article?id=');
+      window.open(String(theUrl).replace('dx.plos.org', 'journals.plos.org/' + PLoSJournals[i].longName + '/article?id='), "_self");
       return;
     }
   }
