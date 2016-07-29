@@ -40,6 +40,17 @@ function reformatPlosUrls () {
   }
 }
 
+/* Reformat urls for NPG Journals */
+function reformatNPGUrls () {
+  var NPGJournals = ["nature", "nbt", "ncb", "nchembio", "nchem", "ncomms", "ng"];
+  for (i = 0; i < NPGJournals.length; i += 1) {
+    if (String(theUrl).includes(NPGJournals[i])) {
+      window.open(String(theUrl).replace('dx.doi.org/10.1038', 'www.nature.com/' + NPGJournals[i] + '/vaop/ncurrent/pdf') + '.pdf');
+      return;
+      }
+    }
+}
+
 var urlPatterns = [
   {urlIn: 'biomedcentral.com', replaceThis: 'articles', replaceWith: 'track/pdf', addThis: '?site=pubmed.gov'},
   {urlIn: 'endocrine.org', replaceThis: 'doi', replaceWith: 'doi/pdf', addThis: ''},
@@ -79,8 +90,10 @@ function lastDitchFetch () {
   theUrl = document.getElementsByClassName("icons portlet")[0].getElementsByTagName("a")[0];
   if (theUrl.innerHTML.startsWith("<img alt=\"Icon for HighWire\"")) {
     window.open(String(theUrl).replace('long', 'full.pdf'), "_self");
-  } else if (String(theUrl).includes('dx.plos.org')){
+  } else if (String(theUrl).includes('dx.plos.org')) {
     reformatPlosUrls();
+  } else if (String(theUrl).includes('dx.doi.org/10.1038')) {
+    reformatNPGUrls();
   } else if (String(document.getElementsByClassName("rprtid")[0].getElementsByTagName("a")[1]).includes("pmc/articles")) {
     window.open(document.getElementsByClassName("rprtid")[0].getElementsByTagName("a")[1] + 'pdf', "_self");
   } else {
