@@ -45,7 +45,7 @@ function reformatNPGUrls () {
   var NPGJournals = ["nature", "nbt", "ncb", "nchembio", "nchem", "ncomms", "ng", "ni", "nmat", "nm", "nmeth", "nn", "nprot", "nrc", "nrcardio"];
   for (i = 0; i < NPGJournals.length; i += 1) {
     if (String(theUrl).includes(NPGJournals[i])) {
-      window.open(String(theUrl).replace('dx.doi.org/10.1038', 'www.nature.com/' + NPGJournals[i] + '/vaop/ncurrent/pdf') + '.pdf');
+      window.open(String(theUrl).replace('dx.doi.org/10.1038', 'www.nature.com/' + NPGJournals[i] + '/vaop/ncurrent/pdf') + '.pdf', "_self");
       return;
       }
     }
