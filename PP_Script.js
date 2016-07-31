@@ -102,7 +102,9 @@ function noPDFErrorMessage () {
   alert(yodaSays[i]);
 }
 
+/***************/
 /* Paper Plane */
+/***************/
 var theUrl = document.getElementsByClassName("icons portlet")[0].getElementsByTagName("a")[0];
 if (!(window.location.href.startsWith('http://www.ncbi.nlm.nih.gov/pubmed'))) {
   alert("This script works only on PubMed abstract pages");
