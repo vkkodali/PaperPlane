@@ -65,6 +65,7 @@ function reformatPlosUrls () {
 
 /* Reformat urls for NPG Journals */
 function reformatNPGUrls () {
+  theUrl = String(document.getElementsByClassName("icons portlet")[0].getElementsByTagName("a")[0]);
   var NPGJournal = (theUrl.substring(theUrl.indexOf('1038/') + 5, theUrl.length)).replace(/[0-9.]/g,'');
   var NPGJournals = ["nature", "nbt", "ncb", "nchembio", "nchem", "ncomms", "ng", "ni", "nmat", "nm", "nmeth", "nn", "nprot", "nrc", "nrcardio", "nrclinonc", "nrd", "nrendo", "nrgastro", "nrg", "nri", "nrmicro", "nrm", "nrneph", "nrneurol", "nrn", "nrrheum", "nrurol", "nsmb"];
   if (NPGJournals.indexOf(NPGJournal) < 0) {
