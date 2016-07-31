@@ -34,10 +34,13 @@ function checkPatterns () {
 /* Reformat based on urlPatterns */
 function patternFetch () {
   theUrl = String(document.getElementsByClassName("icons portlet")[0].getElementsByTagName("a")[0]);
-  var garbage = theUrl.indexOf('?');
-  theUrl = theUrl.substring(0, garbage != -1 ? garbage : theUrl.length);
   for (i = 0; i < urlPatterns.length; i += 1) {
-    if (theUrl.includes(urlPatterns[i].urlIn)) {
+    if (theUrl.includes(urlPatterns[i].urlIn) && (urlPatterns[i].urlIn.includes('karger') || urlPatterns[i].urlIn.includes('thieme-connect'))) {
+      window.open(theUrl.replace(urlPatterns[i].replaceThis, urlPatterns[i].replaceWith) + urlPatterns[i].addThis, "_self");
+      return;
+    } else if (theUrl.includes(urlPatterns[i].urlIn)) {
+      var garbage = theUrl.indexOf('?');
+      theUrl = theUrl.substring(0, garbage != -1 ? garbage : theUrl.length);
       window.open(theUrl.replace(urlPatterns[i].replaceThis, urlPatterns[i].replaceWith) + urlPatterns[i].addThis, "_self");
       return;
     }
