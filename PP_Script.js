@@ -71,26 +71,26 @@ function reformatNPGUrls () {
   theUrl = String(document.getElementsByClassName("icons portlet")[0].getElementsByTagName("a")[0]);
   var NPGJournal = (theUrl.substring(theUrl.indexOf('1038/') + 5, theUrl.length)).replace(/[0-9.]/g,'');
   var NPGJournals1 = ["nature", "nbt", "ncb", "nchembio", "nchem", "ncomms", "ng", "ni", "nmat", "nm", "nmeth", "nn", "nprot", "nrc", "nrcardio", "nrclinonc", "nrd", "nrendo", "nrgastro", "nrg", "nri", "nrmicro", "nrm", "nrneph", "nrneurol", "nrn", "nrrheum", "nrurol", "nsmb"];
-  var NPGJournals2 = [""];
+  var NPGJournals2 = ["bcj", "bmt", "bdj", "bjc"];
   if (NPGJournals1.indexOf(NPGJournal) < 0 && NPGJournals2.indexOf(NPGJournal) < 0) {
     lastDitchFetch();
     return;
   };
   for (i = 0; i < NPGJournals1.length; i += 1) {
     var NPGre = new RegExp("\\b" + NPGJournals1[i] + "\\b");
-    if (String(theUrl).match !== null) {
+    if (String(theUrl).match(NPGre) !== null) {
       window.open(String(theUrl).replace('dx.doi.org/10.1038', 'www.nature.com/' + NPGJournals1[i] + '/vaop/ncurrent/pdf') + '.pdf', "_self");
       return;
       }
-    }
+    };
   for (i = 0; i < NPGJournals2.length; i += 1) {
     var NPGre = new RegExp("\\b" + NPGJournals2[i] + "\\b");
-    if (String(theUrl).match !== null) {
-      var ArticleID = (theUrl.substring(theUrl.indexOf(NPGre), theUrl.length)).replace(/\D/g,'');
-      window.open(String(theUrl).replace('dx.doi.org/10.1038', 'www.nature.com/' + NPGJournals2[i] + '/vaop/ncurrent/pdf') + 'a.pdf', "_self");
+    if (String(theUrl).match(NPGre) !== null) {
+      var ArticleID = (theUrl.substring(theUrl.indexOf("1038/") + 5, theUrl.length)).replace(/\D/g,'');
+      window.open('http://www.nature.com/' + NPGJournals2[i] + '/vaop/ncurrent/pdf') + NPGJournals2[i] + ArticleID + 'a.pdf', "_self");
       return;
       }
-  }
+    };
 }
 
 /* Last ditch effort to fetch a PDF */
