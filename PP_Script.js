@@ -70,7 +70,7 @@ function reformatPlosUrls () {
 function reformatNPGUrls () {
   theUrl = String(document.getElementsByClassName("icons portlet")[0].getElementsByTagName("a")[0]);
   var NPGJournal = (theUrl.substring(theUrl.indexOf('1038/') + 5, theUrl.length)).replace(/[0-9.]/g,'');
-  var NPGJournals1 = ["nature", "nbt", "ncb", "nchembio", "nchem", "ncomms", "ng", "ni", "nmat", "nm", "nmeth", "nn", "nprot", "nrc", "nrcardio", "nrclinonc", "nrd", "nrendo", "nrgastro", "nrg", "nri", "nrmicro", "nrm", "nrneph", "nrneurol", "nrn", "nrrheum", "nrurol", "nsmb", "bdj"];
+  var NPGJournals1 = ["nature", "nbt", "ncb", "nchembio", "nchem", "ncomms", "ng", "ni", "nmat", "nm", "nmeth", "nn", "nprot", "nrc", "nrcardio", "nrclinonc", "nrd", "nrendo", "nrgastro", "nrg", "nri", "nrmicro", "nrm", "nrneph", "nrneurol", "nrn", "nrrheum", "nrurol", "nsmb", "sjbdj", "bdj"];
   var NPGJournals2 = ["npp", "bcj", "bmt", "bjc", "cgt", "cdd", "cr", "cmi", "ctg", "ejcn", "ejhg", "emm", "eye"];
   if (NPGJournals1.indexOf(NPGJournal) < 0 && NPGJournals2.indexOf(NPGJournal) < 0) {
     lastDitchFetch();
@@ -78,7 +78,7 @@ function reformatNPGUrls () {
   };
   for (i = 0; i < NPGJournals1.length; i += 1) {
     var NPGre = new RegExp('\\b' + NPGJournals1[i] + '\\b');
-    if ((String(theUrl)).replace(/[_0-9]+$/, '').match(NPGre) !== null) {
+    if ((String(theUrl)).replace(/[_0-9\-]+$/, '').match(NPGre) !== null) {
       window.open(String(theUrl).replace('dx.doi.org/10.1038', 'www.nature.com/' + NPGJournals1[i] + '/vaop/ncurrent/pdf') + '.pdf', "_self");
       return;
       }
