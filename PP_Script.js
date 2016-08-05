@@ -87,7 +87,7 @@ function reformatNPGUrls () {
     var NPGre = new RegExp('\\b' + NPGJournals2[i] + '\\b');
     if ((String(theUrl)).replace(/[_0-9]+$/, '').match(NPGre) !== null) {
       var ArticleID = (theUrl.substring(theUrl.indexOf("1038/") + 5, theUrl.length)).replace(/\D/g,'');
-      window.open('http://www.nature.com/' + NPGJournals2[i] + '/vaop/ncurrent/pdf' + NPGJournals2[i] + ArticleID + 'a.pdf', "_self");
+      window.open('http://www.nature.com/' + NPGJournals2[i] + '/vaop/ncurrent/pdf/' + NPGJournals2[i] + ArticleID + 'a.pdf', "_self");
       return;
       }
     };
