@@ -78,14 +78,14 @@ function reformatNPGUrls () {
   };
   for (i = 0; i < NPGJournals1.length; i += 1) {
     var NPGre = new RegExp('\\b' + NPGJournals1[i] + '\\b');
-    if (String(theUrl).match(NPGre) !== null) {
+    if ((String(theUrl)).replace(/[_0-9]+$/, '').match(NPGre) !== null) {
       window.open(String(theUrl).replace('dx.doi.org/10.1038', 'www.nature.com/' + NPGJournals1[i] + '/vaop/ncurrent/pdf') + '.pdf', "_self");
       return;
       }
     };
   for (i = 0; i < NPGJournals2.length; i += 1) {
     var NPGre = new RegExp('\\b' + NPGJournals2[i] + '\\b');
-    if (String(theUrl).match(NPGre) !== null) {
+    if ((String(theUrl)).replace(/[_0-9]+$/, '').match(NPGre) !== null) {
       var ArticleID = (theUrl.substring(theUrl.indexOf("1038/") + 5, theUrl.length)).replace(/\D/g,'');
       window.open('http://www.nature.com/' + NPGJournals2[i] + '/vaop/ncurrent/pdf' + NPGJournals2[i] + ArticleID + 'a.pdf', "_self");
       return;
