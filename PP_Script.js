@@ -71,8 +71,9 @@ function reformatNPGUrls () {
   theUrl = String(document.getElementsByClassName("icons portlet")[0].getElementsByTagName("a")[0]);
   var NPGJournal = (theUrl.substring(theUrl.indexOf('1038/') + 5, theUrl.length)).replace(/[0-9.\-]/g,'');
   var NPGJournals1 = ["nature", "nbt", "ncb", "nchembio", "nchem", "ncomms", "ng", "ni", "nmat", "nm", "nmeth", "nn", "nprot", "nrc", "nrcardio", "nrclinonc", "nrd", "nrendo", "nrgastro", "nrg", "nri", "nrmicro", "nrm", "nrneph", "nrneurol", "nrn", "nrrheum", "nrurol", "nsmb", "sjbdj", "bdj"];
-  var NPGJournals2 = ["npp", "bcj", "bmt", "bjc", "cgt", "cdd", "cr", "cmi", "ctg", "ejcn", "ejhg", "emm", "eye"];
-  if (NPGJournals1.indexOf(NPGJournal) < 0 && NPGJournals2.indexOf(NPGJournal) < 0) {
+  var NPGJournals2 = ["npp", "bcj", "bmt", "bjc", "cgt", "cdd", "cr", "cmi", "ctg", "ejcn", "ejhg", "emm", "eye", "gt", "gene", "gim", "hdy", "hr", "icb", "ijir", "ijo", "ijos", "ismej", "ja", "jhg", "jhh", "jes", "jp", "labinvest", "leu", "modpathol", "mp", "mt", "mi", "onc", "oncsis", "pr", "tpj", "pcan", "sc"];
+  var NPGJournals3 = ["nrdp", "sdata", "srep"];
+  if (NPGJournals1.indexOf(NPGJournal) < 0 && NPGJournals2.indexOf(NPGJournal) < 0 && NPGJournals3.indexOf(NPGJournal) < 0) {
     lastDitchFetch();
     return;
   };
@@ -88,6 +89,14 @@ function reformatNPGUrls () {
     if ((String(theUrl)).replace(/[_0-9\-]+$/, '').match(NPGre) !== null) {
       var ArticleID = (theUrl.substring(theUrl.indexOf("1038/") + 5, theUrl.length)).replace(/\D/g,'');
       window.open('http://www.nature.com/' + NPGJournals2[i] + '/vaop/ncurrent/pdf/' + NPGJournals2[i] + ArticleID + 'a.pdf', "_self");
+      return;
+      }
+    };
+  for (i = 0; i < NPGJournals2.length; i += 1) {
+    var NPGre = new RegExp('\\b' + NPGJournals3[i] + '\\b');
+    if ((String(theUrl)).replace(/[_0-9\-]+$/, '').match(NPGre) !== null) {
+      var ArticleID = (theUrl.substring(theUrl.indexOf("1038/") + 5, theUrl.length)).replace(/\D/g,'');
+      window.open('http://www.nature.com/' + NPGJournals2[i] + '/vaop/ncurrent/pdf/' + NPGJournals2[i] + ArticleID + '.pdf', "_self");
       return;
       }
     };
