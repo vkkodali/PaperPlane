@@ -106,13 +106,13 @@ function reformatNPGUrls () {
       }
   }
 
-  if (NPGFormat1.indexOf(NPGJournal) > 0) {
+  if (NPGFormat1.indexOf(NPGJournal) >= 0) {
     reformatNPGFormat1();
     return;
-  } else if (NPGFormat2.indexOf(NPGJournal) > 0) {
+  } else if (NPGFormat2.indexOf(NPGJournal) >= 0) {
     reformatNPGFormat2();
     return;
-  } else if (NPGFormat3.indexOf(NPGJournal) < 0) {
+  } else if (NPGFormat3.indexOf(NPGJournal) >= 0) {
     reformatNPGFormat3();
     return;
   } else {
