@@ -74,20 +74,6 @@ function reformatNPGUrls () {
   var NPGFormat2 = ["npp", "bcj", "bmt", "bjc", "cgt", "cdd", "cr", "cmi", "ctg", "ejcn", "ejhg", "emm", "eye", "gt", "gene", "gim", "hdy", "hr", "icb", "ijir", "ijo", "ijos", "ismej", "ja", "jhg", "jhh", "jes", "jp", "labinvest", "leu", "modpathol", "mp", "mt", "mi", "onc", "oncsis", "pr", "tpj", "pcan", "sc"];
   var NPGFormat3 = ["nrdp", "sdata", "srep"];
 
-  if (NPGFormat1.indexOf(NPGJournal) > 0) {
-    reformatNPGFormat1();
-    return;
-  } else if (NPGFormat2.indexOf(NPGJournal) > 0) {
-    reformatNPGFormat2();
-    return;
-  } else if (NPGFormat3.indexOf(NPGJournal) < 0) {
-    reformatNPGFormat3();
-    return;
-  } else {
-    lastDitchFetch();
-    return;
-  };
-
   function reformatNPGFormat1 () {
     for (i = 0; i < NPGFormat1.length; i += 1) {
       var NPGre = new RegExp('\\b' + NPGFormat1[i] + '\\b');
@@ -119,6 +105,20 @@ function reformatNPGUrls () {
         }
       }
   }
+
+  if (NPGFormat1.indexOf(NPGJournal) > 0) {
+    reformatNPGFormat1();
+    return;
+  } else if (NPGFormat2.indexOf(NPGJournal) > 0) {
+    reformatNPGFormat2();
+    return;
+  } else if (NPGFormat3.indexOf(NPGJournal) < 0) {
+    reformatNPGFormat3();
+    return;
+  } else {
+    lastDitchFetch();
+    return;
+  };
 }
 
 /* Last ditch effort to fetch a PDF */
