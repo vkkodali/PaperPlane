@@ -18,7 +18,8 @@ var urlPatterns = [
   {urlIn: 'dx.doi.org/10.1172', replaceThis: 'dx.doi.org/10.1172/JCI', replaceWith: 'jci.org/articles/view/', addThis: '/pdf/render'},
   {urlIn: 'karger.com/?DOI=', replaceThis: '?DOI=', replaceWith: 'Article/Pdf/', addThis: ''},
   {urlIn: 'thieme-connect.com', replaceThis: 'DOI/DOI?', replaceWith: 'products/ejournals/pdf/', addThis: '.pdf'},
-  {urlIn: 'www.thno.org', replaceThis: 'htm', replaceWith: 'pdf', addThis: ''}
+  {urlIn: 'www.thno.org', replaceThis: 'htm', replaceWith: 'pdf', addThis: ''},
+  {urlIn: 'nejm.org', replaceThis: '/doi/abs/', replaceWith: '/doi/pdf/', addThis: ''}
 ];
 
 /* Check if the Url includes a urlPattern */
@@ -121,6 +122,15 @@ function reformatNPGUrls () {
   };
 }
 
+/* Reformat eLife urls */
+function reformateLifeUrls() {
+  theUrl = String(theUrl);
+  var eLifeID = (theUrl.substring(theUrl.indexOf("eLife"), theUrl.length)).replace(/\D/g,'');
+  var eLifeIssue = document.getElementsByClassName("cit")[0].innerText;
+  eLifeIssue = (eLifeIssue.substring(eLifeIssue.indexOf(";"), eLifeIssue.indexOf(";") + 2)).replace(/\D/g,'');
+  window.open('https://elifesciences.org/content/' + eLifeIssue + '/e' + eLifeID + '-download.pdf', "_self");
+}
+
 /* Last ditch effort to fetch a PDF */
 function lastDitchFetch () {
   theUrl = document.getElementsByClassName("icons portlet")[0].getElementsByTagName("a")[0];
@@ -160,6 +170,8 @@ if (!(window.location.href.includes('ncbi.nlm.nih.gov/pubmed'))) {
   reformatPlosUrls();
 } else if (String(theUrl).includes('dx.doi.org/10.1038')) {
   reformatNPGUrls();
+} else if (String(theUrl).includes('dx.doi.org/10.7554')) {
+  reformateLifeUrls();
 } else {
   lastDitchFetch();
 }
