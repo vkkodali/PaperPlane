@@ -157,7 +157,7 @@ function noPDFErrorMessage () {
 /* Paper Plane */
 /***************/
 var theUrl = document.getElementsByClassName("icons portlet")[0].getElementsByTagName("a")[0];
-if (!(window.location.href.startsWith('http://www.ncbi.nlm.nih.gov/pubmed'))) {
+if (!(window.location.href.includes('ncbi.nlm.nih.gov/pubmed'))) {
   alert("This script works only on PubMed abstract pages");
 } else if (document.getElementsByClassName("icons portlet").length < 1) {
   alert("It appears that a Full text link is not available through PubMed.");
