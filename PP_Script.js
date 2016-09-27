@@ -124,9 +124,10 @@ function reformatNPGUrls () {
 
 /* Reformat eLife urls */
 function reformateLifeUrls() {
-  var eLifeID = (String(theUrl).substring(String(theUrl).indexOf("eLife"), String(theUrl).length)).replace(/\D/g,'');
+  theUrl = String(theUrl);
+  var eLifeID = (theUrl.substring(theUrl.indexOf("eLife"), theUrl.length)).replace(/\D/g,'');
   var eLifeIssue = document.getElementsByClassName("cit")[0].innerText;
-  eLifeIssue = (eLifeIssue.substring(eLifeIssue.indexOf(";"), eLifeIssue.indexOf(";")	+	2)).replace(/\D/g,'');
+  eLifeIssue = (eLifeIssue.substring(eLifeIssue.indexOf(";"), eLifeIssue.indexOf(";") + 2)).replace(/\D/g,'');
   window.open('https://elifesciences.org/content/' + eLifeIssue + '/e' + eLifeID + '-download.pdf', "_self");
 }
 
