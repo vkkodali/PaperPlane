@@ -170,7 +170,7 @@ if (!(window.location.href.includes('ncbi.nlm.nih.gov/pubmed'))) {
   reformatPlosUrls();
 } else if (String(theUrl).includes('dx.doi.org/10.1038')) {
   reformatNPGUrls();
-} else if (String(theUrl).includes('dx.doi.org/10.7554')) {
+} else if (String(theUrl).includes('10.7554/eLife')) {
   reformateLifeUrls();
 } else {
   lastDitchFetch();
